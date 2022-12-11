@@ -1,0 +1,361 @@
+## utworzenie folderu workspace
+
+mkdir workspace
+
+## przejscie do folderu workspace
+cd workspace
+
+# ustawienia gita
+git config -l
+
+#dodanie uzytkownika
+git config --global user.name "wasza_nazwa_uzytkownika_github"
+
+#nie lubimy spamerow
+git config --global user.email "wasza_nazwa_uzytkownika_github@users.noreply.github.com"
+
+## kontener do przechwywania haseł
+git config --global credential.helper store
+
+## sklonowanie projektu
+git clone https://github.com/beatazalewa/se_hello_printer_app_demo
+
+ls
+
+cd se_hello_printer_app_demo/
+
+ls
+
+## mantra do utworzenia środowiska (venv) (czysta maszyna wirtualna)
+
+sudo apt-get update
+
+sudo apt install python3.8-venv
+
+
+python3 -m venv .venv
+
+#aktywacja środowiska
+source .venv/bin/activate
+
+## Instalacja bibliotek (dependencies hell)
+pip install -r requirements.txt
+pip install -r test_requirements.txt
+
+## mówimy: sprawdzam Cię pip
+pip list
+
+## Chwila triumfu /chwila grozy
+python main.py
+
+## 2 okienko terminala
+## przejsc do folderu z aplikacja
+
+## wkleić do przeglądarki na maszynie wirtualnej
+http://127.0.0.1:5000
+http://127.0.0.1:5000/outputs
+http://127.0.0.1:5000/?output=json
+
+## aplikacja do testowania JSOna
+https://jsonlint.com/
+
+http://127.0.0.1:5000/?output=plain
+http://127.0.0.1:5000/?output=plain_lowercase
+http://127.0.0.1:5000/?output=plain_uppercase
+
+## testy w 2 terminalu
+
+curl 127.0.0.1:5000
+
+curl 127.0.0.1:5000/outputs
+
+curl 127.0.0.1:5000/?outputs=json
+curl '127.0.0.1:5000/?output=json'
+curl '127.0.0.1:5000/?output=plain'
+curl '127.0.0.1:5000/?output=plain_lowercase'
+curl '127.0.0.1:5000/?output=plain_uppercase'
+
+## faza testowania - 2 terminal
+source .venv/bin/activate
+
+PYTHONPATH=. py.test
+PYTHONPATH=. py.test --verbose -s
+
+## 1 okienko terminala
+
+git log
+
+## inicjalizacja gita
+git init
+
+touch .gitignore
+
+code .
+
+## przechodzimy pod ten adres, klikam przycisk Raw i kopiujemy zawartosc do pliku .gitignore
+https://github.com/github/gitignore/blob/main/Python.gitignore
+
+## 1. Przechodzimy do swojego konta na Githubie
+## 2. Klikamy link Repositories
+## 3. Klikamy przycisk New
+## 4. W Repository name wpisujemy nazwę: se_hello_printer_app_demo
+## 5. Wybieramy typ projektu: Public
+## 6. Zostawiamy checkboxa przy Add a README file pustego (nie zaznaczonego !!!)
+## 7. Klikamy Create repository
+## 8. Kopiujemy kod z sekcji: ... or push an existing repository from the command line
+
+## W I terminalu wpisać: git remote -v i sprawdzic URLe do push i fetch
+
+## Wywołać komendę poniżej, aby podmienić nazwę repozytorium na „naszą”:
+## tylko dla pusha
+git remote set-url --push origin "wasz url do repo na githubie"
+##  dla push i fetch
+git remote set-url origin "wasz url do repo na githubie"
+
+## np. git remote set-url origin "https://github.com/bzalewa/se_hello_printer_app_demo"
+
+## Potem sprawdzić zmiany:
+git remote -v
+
+
+## Mantra GIT
+git status
+
+git add .gitignore
+
+git status
+
+
+git commit -m "Added .gitignore file"
+
+git status
+
+## po utworzeniu repozytorium skopiowanie kodu poniżej sekcji: …or push an existing repository from the command line
+git remote add origin https://github.com/wasza_nazwa_uzytkownika_na_Githubie/se_hello_printer_app_demo.git
+git branch -M main
+git push -u origin main
+
+# token
+# Profil --> Settings --> Developer Settings --> Personal access token --> Token (classic) --> generate new token --> generate new token (classic)
+# Podać haslo --> Confirm
+
+## podac nazwe tokena, zaznaczyc wszystkie uprawnienia i kliknac Generate token
+
+# Zapisać token !!
+
+# jeśli nie macie credential.helper=store
+git config --global credential.helper store
+
+# plik formater.py
+def format_to_json(msg, imie):
+    return ('{ "imie":"' + imie + '", "mgs":"' +
+            msg + '"}')
+            
+## 1 instancja terminala
+python main.py
+
+## 2 instancja terminala
+## wkleić do przeglądarki na maszynie wirtualnej
+http://127.0.0.1:5000
+http://127.0.0.1:5000/?output=json
+            
+## testy w 2 terminalu
+
+curl 127.0.0
+curl '127.0.0.1:5000/?output=json'
+
+PYTHONPATH=. py.test
+PYTHONPATH=. py.test --verbose -s
+
+# 1 okienko terminala
+code .
+# test_views.py
+self.assertEqual(b'{ "imie":"Natalia", "mgs":"Hello World!"}', rv.data)
+
+python main.py
+
+# 2 okienko terminala
+PYTHONPATH=. py.test
+PYTHONPATH=. py.test --verbose -s
+
+# 1 okienko
+git status
+git add hello_world/formater.py
+git add test/test_views.py
+git status
+git commit -m "Fixed the bug with JSON formater"
+git push -u origin main
+
+https://www.flynerd.pl/2018/06/jak-napisac-dobre-readme-projektu-na-githubie.html
+https://www.linkedin.com/in/beata-zalewa/
+https://www.linkedin.com/in/monika-porydzaj/
+https://pl.linkedin.com/in/ewa-%C5%9Bliwka-9a9065105
+https://www.linkedin.com/in/iryna-ivanishyna-9b248b219
+https://www.linkedin.com/in/bernardjablonski/
+https://www.linkedin.com/in/pawel-florek/
+https://www.linkedin.com/in/mateusz-falak-ab6b64209/
+https://www.linkedin.com/in/renatakacperek/
+
+https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882
+
+https://kursgita.pl/
+
+https://www.reddit.com/r/git/comments/pix78u/git_explained_with_cats/
+
+https://learngitbranching.js.org/?locale=pl     <-do nauki gita
+
+https://learngitbranching.js.org/ - cwiczenie git 
+
+https://www.youtube.com/watch?v=K7yR--yL0bc
+
+https://github.com/beatazalewa/nauka_gita
+
+## branche
+git status
+
+# branche lokalne
+git branch
+
+# branche zdalne 
+git branch -r
+
+# zdalne i lokalne branche 
+git branch -a
+
+# utworzenie nowego brancha
+#git checkout -b -nazwa-brancha
+
+git checkout -b features
+
+## Dodanie pliku Makefile
+touch Makefile
+code .
+## Po dodaniu tego kodu do pliku, a następnie wpisaniu w terminalu: make deps, zainstalowane zostaną biblioteki z obydwu plików
+.PHONY: deps test
+
+deps:
+	pip install -r requirements.txt; \
+pip install -r test_requirements.txt
+
+git status
+git add Makefile
+git commit -m "Added Makefile"
+
+# jezeli local branch nie istnieje na zdalnym repo 
+
+git push -u origin features
+
+## te 3 komendy dodane do Makefile pozwolą nam na uruchomienie aplikacji poprzez wywołanie polecenia make run i na uruchomienie testów poleceniem make test:
+.PHONY: deps test
+
+deps:
+	pip install -r requirements.txt; \
+		pip install -r test_requirements.txt
+
+run:
+	python main.py
+
+test:
+	PYTHONPATH=. py.test
+
+test_verbose:
+	PYTHONPATH=. py.test --verbose -s
+
+# 1 okienko terminala
+
+make run
+
+# 2 okienko terminala
+
+make test 
+
+make test_verbose
+
+make deps
+
+## ta linia kodu dodana do Makefile spowoduje wywołanie analizatora kodu
+
+  
+# 1 okienko terminala
+
+make run
+
+# 2 okienko terminala
+
+make lint
+
+## ___init__.py
+import hello_world.views # noqa
+
+
+# plik views.py
+
+from hello_world import app
+from hello_world.formater import get_formatted
+from hello_world.formater import SUPPORTED, PLAIN
+from flask import request
+
+moje_imie = "Natalia"
+msg = "Hello World!"
+
+
+@app.route('/')
+def index():
+    output = request.args.get('output')
+    if not output:
+        output = PLAIN
+    return get_formatted(msg, moje_imie,
+                         output.lower())
+
+
+@app.route('/outputs')
+def supported_output():
+    return ", ".join(SUPPORTED)
+
+git status
+git add Makefile
+git commit -m "Added new commands to Makefile"
+
+git push -u origin features
+
+
+https://github.com/bzalewa/se_hello_printer_app_demo/tree/features
+
+
+git add hello_world/__init__.py
+git commit -m "Added # noqa to __init__.py file"
+git add hello_world/views.py
+git commit -m "Fixed issues with formatting"
+git status
+git push -u origin features
+
+
+# przełączenie brancha na main
+git status
+
+git checkout main
+git status
+
+git merge features
+
+git push -u origin main
+
+# usuniecie brancha zdalnego
+
+git push -u origin --delete features
+
+# usuniecie brancha lokalnego
+git branch -d features
+
+git branch -a
+
+#praca domowa
+
+https://github.com/skills/introduction-to-github
+https://github.com/skills/communicate-using-markdown
+https://github.com/skills/review-pull-requests
+
+
+
+
+
